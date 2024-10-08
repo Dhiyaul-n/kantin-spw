@@ -1,13 +1,5 @@
 <template>
-  <div>
+  <div class="w-full min-h-screen">
     <slot />
   </div>
 </template>
-
-<script setup>
-
-</script>
-
-<style scoped>
-
-</style>
