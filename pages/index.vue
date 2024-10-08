@@ -1,8 +1,8 @@
 <template>
-  <div class="wrapped bg-[#353636] w-full">
+  <div class="wrapped bg-[#484848] w-full">
     <div class="homepage-1 flex justify-center items-center h-screen">
       <img
-        class="homepage-img-1 rounded-[50px] w-[175px] h-[48px] object-cover hover:w-[80%] hover:h-[85%] transition-all duration-1000 ease-in-out"
+        class="homepage-img-1 shadow-[0_0px_20px_10px_rgba(000,000,000,1)] hover:shadow-none rounded-[50px] hover:rounded-[100px] w-[145px] h-[40px] object-cover hover:w-[80%] hover:h-[85%] transition-all duration-1000 ease-in-out"
         src="../assets/img/homepage.png" alt="">
     </div>
 
@@ -16,6 +16,7 @@
             </svg>
           </button>
           <h1 class="font-staat text-[40px] text-white font-bold m-[5%]">KANTIN</h1>
+          <img class="relative right-2 w-16" src="../assets/img/logo-spw.png">
         </div>
         <NuxtLink to="login">
           <button
@@ -26,15 +27,67 @@
       </div>
     </div>
 
-    <h1 class="text-white text-[30px] font-staat font-bold relative py-[1%] mx-[10%]">
+    <h1 class="text-white text-[20px] font-staat font-bold relative py-[1%] mx-[10%]">
       <NuxtLink to="/">
         HOMEPAGE/
       </NuxtLink>
     </h1>
 
-    <div class="bg-[#FFFFFF, 0.4 w-100vwh h-[40%]">
-      <img src="" alt="">
+    <div class="bg-white/30 flex justify-center items-center w-[45%] h-[50vh] mx-[10%] rounded-[30px]">
+      <img src="../assets/img/salad-buah-homepage.png" alt="" class="w-[40%] h-[60%] ">
     </div>
+    <div
+      class="bg-[#353636] w-[30%] h-[100%] rounded-[20px] relative left-[25%] justify-start shadow-[0_0px_200px_5px_rgba(255,255,255,0.3)]">
+      <h1 class="text-center text-white text-[30px] font-quantico">Best seller</h1>
+      <div class="grid grid-cols-4 relative left-[5px] mx-1">
+
+        <div
+          class="flex justify-center bg-white hover:bg-transparent duration-700 hover:border-[1px] hover:border-white rounded-[14px] w-[90%] relative items-center">
+          <img class="w-[100%] h-[100%] scale-75" src="../assets/img/salad-buah-homepage.png">
+        </div>
+
+        <div
+          class="flex justify-center bg-white hover:bg-transparent duration-700 hover:border-[1px] hover:border-white rounded-[14px] w-[90%] relative items-center">
+          <img class="w-[100%] h-[100%] scale-75" src="../assets/img/salad-buah-homepage.png">
+        </div>
+
+        <div
+          class="flex justify-center  bg-white hover:bg-transparent duration-700 hover:border-[1px] hover:border-white rounded-[14px] w-[90%] relative items-center">
+          <img class="w-[100%] h-[100%] scale-75" src="../assets/img/salad-buah-homepage.png">
+        </div>
+        <button>
+          <div
+            class="flex justify-center bg-white hover:bg-transparent duration-700 hover:border-[1px] hover:border-white rounded-[14px] w-[90%] relative items-center">
+            <img class="w-[100%] h-[100%] scale-75" src="../assets/img/salad-buah-homepage.png">
+          </div>
+        </button>
+      </div>
+
+      <div class="relative left-[35%] w-[100%] ">
+        <NuxtLink to="/catalogue">
+          <button
+            class="bg-[#F7B945] hover:bg-transparent duration-200 hover:text-white hover:border-white text-center font-staat font-bold text-[10px] w-[30%] rounded-[15px] my-2 p-2">
+            LIHAT SEMUA MENU
+          </button>
+        </NuxtLink>
+      </div>
+
+
+    </div>
+
   </div>
 </template>
-<style scoped></style>
+<style>
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 1000px #353636;
+}
+
+::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 50px;
+}
+</style>

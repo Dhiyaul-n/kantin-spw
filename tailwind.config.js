@@ -13,12 +13,12 @@ export default {
       fontFamily: {
         staat: ['"Staatliches"', 'sans-serif', 400],
         quantico: ['"Quantico"', 'sans-serif'],
-        ubuntu: ['"Ubuntu"', 'sans-serif'],
+        ubuntu: ['"Ubuntu"', 'sans - serif'],
+        lato: ['"Lato"', 'sans - serif']
       },
       colors: {
 
       },
     },
-  },
-  plugins: [require('daisyui')],
+  }
 }

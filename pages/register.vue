@@ -1,7 +1,8 @@
 <template>
   <div class="wrapper">
     <div class="flex justify-center  h-4/5 mt-16 rounded-3xl">
-      <div class="shadow-lg flex flex-col bg-[#ededed] rounded-[30px] w-2/6 font-staat font-bold text-2xl">
+      <div
+        class="shadow-lg flex flex-col justify-center bg-[#ededed] rounded-[30px] w-2/6 font-staat font-bold text-2xl">
 
         <div class="flex flex-col justify-center items-center w-[100%]">
           <NuxtLink to="/">
@@ -16,27 +17,27 @@
           <img class="absolute left-[40.5%] top-[11%] w-10" src="../assets/img/logo-spw.png">
         </div>
 
-
-
-        <div class="flex flex-col my-[20%] gap-20">
+        <div class="flex flex-col gap-10">
           <p class=" text-[43] font-staat">Welcome to SPW</p>
           <form action="">
+            <input
+              class="  mb-4 h-[22%] border-[2px] ps-3 border-black rounded-[8px] text-[13px] w-[70%] font-quantiico font-bold "
+              type="text" placeholder="nama">
             <input
               class="  mb-4 h-[22%] border-[2px] ps-3 border-black rounded-[8px] text-[13px] w-[70%] font-quantiico font-bold "
               type="text" placeholder="email">
             <input
               class=" mb-4 h-[22%] border-[2px] ps-3 border-black rounded-[8px] text-[13px] w-[70%] font-quantiico font-bold "
               type="text" placeholder="password">
-            <button class="btn bg-[#242424] text-[16px] text-white w-[70%] h-[22%] rounded-[7px] hover:bg-[#D1D1D1]">Log
-              in</button>
-            <p class="text-[11px]">dont have an account?
-              <NuxtLink to="register"><a class="text-blue-500">Sign up</a></NuxtLink>
+            <button
+              class="btn bg-[#242424] text-[16px] text-white w-[70%] h-[22%] rounded-[7px] hover:bg-[#D1D1D1]">Create
+              an
+              account</button>
+            <p class="text-[11px]">already have an account?
+              <NuxtLink to="login"><a class="text-blue-500">Sign in</a></NuxtLink>
             </p>
           </form>
         </div>
-
-
-
 
 
       </div>
