@@ -14,7 +14,8 @@ export default {
         staat: ['"Staatliches"', 'sans-serif', 400],
         quantico: ['"Quantico"', 'sans-serif'],
         ubuntu: ['"Ubuntu"', 'sans - serif'],
-        lato: ['"Lato"', 'sans - serif']
+        lato: ['"Lato"', 'sans - serif'],
+        inter: ['"Inter"','sans-serif']
       },
       colors: {
 

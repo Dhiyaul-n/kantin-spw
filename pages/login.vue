@@ -24,7 +24,7 @@
               class="mb-4 h-[22%] border-[2px] ps-3 border-black rounded-[8px] text-[13px] w-[70%] font-quantiico font-bold"
               type="password" v-model="password" placeholder="Password">
             <button type="submit"
-              class="btn bg-[#242424] text-[16px] text-white w-[70%] h-[22%] rounded-[7px] hover:bg-[#D1D1D1]"
+              class="btn bg-[#242424] text-[16px] text-white w-[70%] h-[22%] rounded-[7px] duration-500 ease-in-out hover:bg-[#D1D1D1]"
               :disabled="status == 'pending' || !password">Log
               In</button>
             <p class="text-[11px]">dont have an account?

@@ -30,7 +30,7 @@
               class=" mb-4 h-[22%] border-[2px] ps-3 border-black rounded-[8px] text-[13px] w-[70%] font-quantiico font-bold "
               type="text" placeholder="password">
             <button
-              class="btn bg-[#242424] text-[16px] text-white w-[70%] h-[22%] rounded-[7px] hover:bg-[#D1D1D1]">Create
+              class="btn bg-[#242424] text-[16px] text-white w-[70%] h-[22%] rounded-[7px] hover:bg-[#D1D1D1] duration-500 ease-in-out">Create
               an
               account</button>
             <p class="text-[11px]">already have an account?

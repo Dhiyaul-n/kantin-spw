@@ -1,29 +1,44 @@
 <template>
-  <div class="wrapped bg-[#484848] w-full">
+  <div class="wrapped bg-[#484848] w-full h-full">
     <div class="homepage-1 flex justify-center items-center h-screen">
       <img
         class="homepage-img-1 shadow-[0_0px_20px_10px_rgba(000,000,000,1)] hover:shadow-none rounded-[50px] hover:rounded-[100px] w-[145px] h-[40px] object-cover hover:w-[80%] hover:h-[85%] transition-all duration-1000 ease-in-out"
         src="../assets/img/homepage.png" alt="">
     </div>
 
-    <div class="header flex justify-center items-center">
-      <div class="bg-[#1E1E1E] w-[85%] h-[80px] rounded-[40px] flex justify-between items-center ">
+    <div class="header">
+      <div class="bg-[#1E1E1E] w-screen h-[60px] flex justify-between items-center rounded-[50px] ">
         <div class="flex justify-start items-center">
           <button>
-            <svg class="relative left-4 w-20 h-14 text-white-800 dark:text-white" aria-hidden="true"
+            <svg class="relative left-4 w-12 h-10 text-white-800 dark:text-white" aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
               <path stroke="white" stroke-linecap="round" stroke-width="1" d="M5 7h14M5 12h14M5 17h14" />
             </svg>
           </button>
-          <h1 class="font-staat text-[40px] text-white font-bold m-[5%]">KANTIN</h1>
-          <img class="relative right-2 w-16" src="../assets/img/logo-spw.png">
+          <h1 class="font-staat text-[30px] text-white font-bold m-[5%]">KANTIN</h1>
+          <img class="relative mx-1 w-12" src="../assets/img/logo-spw.png">
         </div>
-        <NuxtLink to="login">
+
+        <div class="flex justify-center items-center">
           <button
-            class="bg-[#ededed] rounded-[40px] w-[160px] h-[60px] m-3 text-[20px] font-ubuntu font-[800] hover:bg-[transparent] hover:text-white duration-700 ease-in-out">
-            Log in
+            class=" w-[160px] h-[60px] m-3 mx-8 text-[20px] font-ubuntu font-[800] hover:bg-[transparent] text-white duration-700 ease-in-out relative start-1/4">
+            <NuxtLink to="cart">
+              <svg class="w-[90%] h-[50%] text-gray-800 dark:text-white" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
+                <path stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
+              </svg>
+            </NuxtLink>
           </button>
-        </NuxtLink>
+
+          <NuxtLink to="login">
+            <button
+              class="bg-[#ededed] rounded-[40px] w-[160px] h-[40px] m-3 text-[18px] font-ubuntu font-[800] hover:bg-[transparent] hover:text-white duration-700 ease-in-out">
+              Log in
+            </button>
+          </NuxtLink>
+        </div>
+
       </div>
     </div>
 
@@ -77,17 +92,4 @@
 
   </div>
 </template>
-<style>
-::-webkit-scrollbar {
-  width: 3px;
-}
-
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 1000px #353636;
-}
-
-::-webkit-scrollbar-thumb {
-  background: white;
-  border-radius: 50px;
-}
-</style>
+<style></style>
