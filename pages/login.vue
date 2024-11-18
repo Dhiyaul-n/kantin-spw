@@ -33,9 +33,16 @@
           </form>
         </div>
       </div>
-      <img src="../assets/img/bg-card.png" class="rounded-r-[30px] relative z-[-1] right-6">
-    </div>
-  </div>
+      <div v-if="status == 'error'" class="mb-4">
+        <p class="text-red-500 text-center">{{ error.message }}</p>
+      </div>
+      <div class="mb-4">
+        <UButton type="submit" color="black" class="w-full justify-center rounded"
+          :disabled="status == 'pending' || !password">Log In</UButton>
+      </div>
+    </form>
+    <NuxtLink to="/">Back</NuxtLink>
+  </UContainer>
 </template>
 
 <script setup>
@@ -53,10 +60,15 @@ const { execute: login, status, error } = useAsyncData('login', async () => {
     email: email.value,
     password: password.value
   })
-  if (error) throw "Username atau password salah"
+  if (error) throw new Error('Email atau password salah')
   if (user) navigateTo('/dashboard')
 }, {
   immediate: false
+})
+watch(error, () => {
+  setTimeout(() => {
+    error.value = ''
+  }, 3000)
 })
 </script>
 
