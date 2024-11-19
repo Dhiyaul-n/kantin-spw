@@ -16,9 +16,10 @@
     "gsap": "^3.12.5",
     "nuxt": "^3.13.0",
     "vue": "latest",
+    "vue-chartjs": "^5.3.2",
     "vue-router": "^4.4.5"
   },
   "devDependencies": {
-    "@iconify-json/tabler": "^1.2.6"
+    "@iconify-json/tabler": "^1.2.7"
   }
 }

@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col min-h-full justify-center items-center">
+  <div class="flex flex-col min-h-full items-center mt-48">
     <div class="w-fit relative border rounded-2xl">
-      <NuxtLink class="absolute top-3 left-3" to="/dashboard/guru/">⬅️</NuxtLink>
+      <UButton class="absolute top-3 left-3" icon="i-line-md-arrow-close-left" variant="ghost" @click="navigateTo('/dashboard/guru')"></UButton>
       <UForm class="p-10 space-y-4 flex flex-col" :validate="validate" :state="state" @submit="addGuru">
         <UFormGroup label="Nama Guru" name="nama">
           <UInput v-model="state.nama" placeholder="Nama lengkap" />

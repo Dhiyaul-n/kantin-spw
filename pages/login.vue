@@ -40,9 +40,9 @@
         <UButton type="submit" color="black" class="w-full justify-center rounded"
           :disabled="status == 'pending' || !password">Log In</UButton>
       </div>
-    </form>
-    <NuxtLink to="/">Back</NuxtLink>
-  </UContainer>
+      <NuxtLink to="/">Back</NuxtLink>
+    </div>
+  </div>
 </template>
 
 <script setup>

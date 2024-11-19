@@ -12,6 +12,9 @@
           icon="heroicons:magnifying-glass-20-solid" @input="() => page = 1" />
       </div>
       <UTable :rows="filteredRows" :columns="columns" :loading="status == 'pending'" class="border rounded-lg w-1/2">
+        <template #no-data="{ index }">
+          <div>{{ (page - 1) * pageCount + index + 1 }}</div>
+        </template>
         <template #actions-data="{ row }">
           <UButton color="yellow" variant="ghost" icon="heroicons:pencil-square-20-solid"
             @click="openEditModal(row.id)" />
@@ -47,7 +50,6 @@
           </template>
           <div v-if="selectedItem">
             <p>Nama Guru: {{ selectedItem.nama }}</p>
-            <p v-if="selectedItem.jadwal">Hari: {{ selectedItem.jadwal.hari }}</p>
           </div>
           <template #footer>
             <div class="flex gap-2">
@@ -73,7 +75,7 @@ const supabase = useSupabaseClient()
 
 const searchQuery = ref('')
 
-const { data: teachers, status, error, refresh } = await useAsyncData('teachers', async () => {
+const { data: teachers, status, error, refresh } = useLazyAsyncData('teachers', async () => {
   try {
     const { data, error } = await supabase.from('guru').select('id, nama').order('id')
     if (error) throw error
@@ -104,6 +106,7 @@ const openEditModal = (teacherId) => {
   selectedId.value = teacherId
   if (selectedItem.value) {
     state.nama = selectedItem.value.nama
+
   }
   editModal.value = true
 }
@@ -115,6 +118,7 @@ const closeEditModal = () => {
 const validate = (state) => {
   const errors = []
   if (!state.nama) errors.push({ path: 'nama', message: 'Required' })
+
   return errors
 }
 
@@ -163,6 +167,10 @@ const deleteGuru = async (teacherId) => {
 
 const columns = [
   {
+    key: 'no',
+    label: 'No'
+  },
+  {
     key: 'nama',
     label: 'Nama'
   }, {
@@ -176,15 +184,16 @@ const pageCount = 8
 
 const filteredRows = computed(() => {
   if (!searchQuery.value) {
-    return teachers.value.slice((page.value - 1) * pageCount, (page.value) * pageCount)
+    return teachers.value?.slice((page.value - 1) * pageCount, (page.value) * pageCount)
   }
 
-  const filtered = teachers.value.filter((teacher) => {
+  const filtered = teachers.value?.filter((teacher) => {
     return teacher.nama.toLowerCase().includes(searchQuery.value.toLowerCase().trim())
   })
 
   return filtered.slice((page.value - 1) * pageCount, (page.value) * pageCount)
 })
 </script>
+
 
 <style scoped></style>

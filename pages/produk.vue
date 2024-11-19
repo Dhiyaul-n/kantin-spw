@@ -160,24 +160,42 @@ function showSidebar() {
         {{ error.message }}
       </div>
     </div>
-    <div v-else class="min-h-full grid grid-cols-2 md:grid-cols-3 gap-x-10 gap-y-8">
+    <div v-else class="min-h-full grid grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8">
       <div v-for="product in filteredProducts" :key="product.id">
-        <UCard class="h-full shadow-lg" :class="borderClass(product.kelompok.kelas.nama)"
-          :ui="{ body: { base: 'h-full grid grid-flow-col grid-cols-2 grid-rows-2 gap-5' } }">
+        <UCard class="h-full shadow-lg hover:scale-105 duration-300" :class="borderClass(product.kelompok.kelas.nama)"
+          :ui="{ body: { base: 'h-full grid grid-flow-col grid-cols-2 grid-rows-2 gap-5 relative' } }">
           <div class="flex flex-col">
-            <div class="font-bold text-lg">{{ product.nama }}</div>
-            <div class="text-lg text-red-500">{{ rupiah(product.harga) }}</div>
+            <div class="font-bold text-xl">{{ product.nama }}</div>
+            <div class="font-semibold text-lg text-green-500">{{ rupiah(product.harga) }}</div>
             <div class="text-sm">Stok: {{ product.sisa }}</div>
           </div>
-          <div class="flex items-end me-5">
-            <UButton class="w-full justify-center" label="Add to cart" />
+          <div v-if="product.order > 0" class="flex items-end me-5">
+            <div class="flex items-center gap-x-5">
+              <UButton class="active:bg-green-700 active:text-white transition" icon="i-heroicons-minus-20-solid"
+                variant="outline" :ui="{ rounded: 'rounded-full' }" @click="orderProduct(product.id, -1)" />
+              <div>{{ product.order }}</div>
+              <UButton class="active:bg-green-700 active:text-white transition" icon="i-heroicons-plus-20-solid"
+                variant="outline" :ui="{ rounded: 'rounded-full' }"
+                @click="orderProduct(product.id, 1)" />
+            </div>
+          </div>
+          <div v-else class="flex items-end me-5">
+            <UButton class="w-full justify-center rounded-full active:bg-green-700 active:text-white transition"
+              variant="outline" color="emerald" label="+ Keranjang" @click="orderProduct(product.id, 1)" />
           </div>
           <div class="row-span-2 flex justify-center items-center">
-            <NuxtImg v-if="product.fotoUrl" :src="product.fotoUrl" width="300" />
-            <NuxtImg v-else src="img/img-placeholder.png" width="300" />
+            <NuxtImg v-if="product.fotoUrl" :src="product.fotoUrl" width="300" height="300" />
+            <NuxtImg v-else src="img/img-placeholder.png" width="300" height="300" />
           </div>
-          <!-- <div v-if="product.kelompok" class="text-center text-gray-500 text-sm">{{ product.kelompok.nama }} / {{
-            product.kelompok.kelas.nama }}</div> -->
+          <UTooltip class="absolute top-1 end-1" :ui="{}" :popper="{ arrow: true, placement: 'top-end' }">
+            <UIcon name="i-tabler-info-circle" class="w-5 h-5" />
+            <template #text>
+              <div v-if="product.kelompok" class="text-sm">
+                <span class="text-gray-400">{{ product.kelompok.nama }}</span> / <span class="text-gray-600">{{
+                  product.kelompok.kelas.nama }}</span>
+              </div>
+            </template>
+          </UTooltip>
         </UCard>
 >>>>>>> 3fd0bc1b05c7d43b50d4a502df88800e82d95ea3
       </div>
@@ -204,6 +222,8 @@ function showSidebar() {
 <script setup>
 const supabase = useSupabaseClient()
 
+const { cart, addToCart, removeFromCart } = useCart()
+
 const borderClass = (kelas) => {
   return {
     'border border-green-500 shadow-green-500': (kelas.includes('PPLG')),
@@ -229,9 +249,12 @@ const { data: products, status, error } = useLazyAsyncData('products', async () 
     if (data) {
       data = data.map(data => {
         const { data: url } = supabase.storage.from('produk').getPublicUrl(data.foto)
+        const cartItem = cart.value.find(order => order.produk === data.id)
+
         return {
           ...data,
-          fotoUrl: data.foto ? url.publicUrl : null
+          fotoUrl: data.foto ? url.publicUrl : null,
+          order: cartItem ? cartItem.jumlah : 0
         }
       })
     }
@@ -259,6 +282,17 @@ const filteredProducts = computed(() => {
 
   return filtered
 })
+
+const orderProduct = (productId, amount) => {
+  const product = products.value.find(product => product.id === productId)
+  if (!product) return
+
+  const newAmount = Math.max(0, Math.min(product.order + amount, product.sisa))
+  product.order = newAmount
+
+  if (newAmount === 0) removeFromCart(productId)
+  else addToCart(productId, newAmount)
+}
 </script>
 
 <style scoped></style>
